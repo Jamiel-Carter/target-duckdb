@@ -300,6 +300,10 @@ def persist_lines(connection, config, lines) -> None:
             if not flushed_state:
                 flushed_state = copy.deepcopy(state)
 
+        elif t == "BATCH":
+            LOGGER.debug("BATCH message")
+            LOGGER.info("Batch data: %s", o)
+
         else:
             raise Exception(
                 "Unknown message type {} in message {}".format(o["type"], o)
